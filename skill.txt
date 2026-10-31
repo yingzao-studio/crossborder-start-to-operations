@@ -1,13 +1,28 @@
-以下为完整技能指令，按当前任务读取相关部分；维护文档无需默认加载。
+<<<SKILL-PACK-BEGIN crossborder-start-to-operations version=2.1.2>>>
+本文件为普通聊天模式的完整技能指令，不是MCP服务，也不代表已永久安装。
+文中的references等相对路径，对应本文件RESOURCE标记章节；按需使用已提供的正文，不要因无法访问本地路径而假装缺少这些内嵌资料。
+只有实际读到全部所需资料才执行对应阶段。链接抓取、附件解析或全文读取失败时如实报告，不能仅见标题/首尾标记就声称已经完整加载。
+本环境能力由当前宿主决定，不能把技能目录支持等同于普通聊天支持。输出先给用户可用成果，再附必要来源与缺口。
 
-===== SKILL.md =====
+资源索引：
+- SKILL.md
+- references/evidence.md
+- references/first-day.md
+- references/platform-compatibility.md
+- references/project-record.md
+- references/sop.md
+- references/standards-review.md
+- references/templates.md
+
+
+<<<RESOURCE SKILL.md>>>
 ---
 name: crossborder-start-to-operations
 description: 带尚未开店、不知卖什么的跨境新手先回答最多三个问题，完成当天第一步；再按阶段做路线核验、成本测算、开店和经营复盘。动态政策与费用查官方来源，不保证获批或盈利。 Start cross-border ecommerce from zero.
 license: MIT
 metadata:
   author: "yingzao-studio"
-  version: "2.1.1"
+  version: "2.1.2"
   standards-reviewed: "2026-10-31"
 ---
 
@@ -15,7 +30,7 @@ metadata:
 
 把用户当前的困惑变成今天能完成的动作。用户还没开店时，从判断能不能做、适合怎么做开始，不默认已有公司、货源、海外账户或运营经验。目标是跑通可核验的小规模经营闭环，不承诺出单或盈利。
 
-## 任务识别与新手入口（v2.1.1）
+## 任务识别与新手入口（v2.1.2）
 
 适用人群：尚未开店、没有选品方向的个人或小团队，以及需要逐步完善跨境经营流程的卖家。
 最少输入：用户说清目前阶段即可启动；所在地、资质、预算未知时先收集，不把缺资料当作拒绝帮助的理由。
@@ -100,8 +115,13 @@ AI可做研究、比较、测算、材料清单、商品草稿、图片方案、
 只读取当前阶段需要的参考，不自动加载整套资料或通用提示词。通用提示词仅供不支持技能文件的宿主使用。用户只要求审查或修改技能时，不启动业务任务。
 用户要求的首轮三个问题已回答时不再问一遍。首日只安排一项不花钱的准备；路线建议前核对适用条件，不能把未知费用填成0。
 
+## 豆包与DeepSeek接入
 
-===== references/evidence.md =====
+在豆包、DeepSeek普通聊天或DeepSeek Harness中首次使用时，按需读 [平台接入核验](references/platform-compatibility.md)。聊天单文件方式使用本文件内嵌的RESOURCE章节，不要求访问不存在的本地路径；原生目录方式保留本目录的相对资源。先按实际能力说明缺口，不声称未经验证的安装成功。
+
+<<<END-RESOURCE SKILL.md>>>
+
+<<<RESOURCE references/evidence.md>>>
 # 来源核验协议
 
 ## 证据优先级
@@ -135,8 +155,9 @@ AI可做研究、比较、测算、材料清单、商品草稿、图片方案、
 对费用除上述信息外补：币种、计费单位、是否含税、适用档位、变动与固定部分、未包含项目。引用官方费率不等于真实到手利润。
 检索摘要、页面正文和后台个性化结果分开记录；页面虽能打开但目标段落不可读，仍不算相关事实核验成功。
 
+<<<END-RESOURCE references/evidence.md>>>
 
-===== references/first-day.md =====
+<<<RESOURCE references/first-day.md>>>
 # 第一天：先建立起点，不急着选平台
 
 ## 首轮
@@ -160,8 +181,59 @@ AI可做研究、比较、测算、材料清单、商品草稿、图片方案、
 
 用户明确要全套SOP时展开；已有店铺则跳到当前阶段；仅更新技能时不运行本首日流程。用户要提交材料或付费时，依据已有授权准备具体可审阅操作，不因“闭环”扩大授权。
 
+<<<END-RESOURCE references/first-day.md>>>
 
-===== references/project-record.md =====
+<<<RESOURCE references/platform-compatibility.md>>>
+# 豆包与DeepSeek接入核验 · 2026-10-31
+
+## 核对结果与适用范围
+
+|入口|本次可以确认|本包处理|尚未验证|
+|---|---|---|---|
+|豆包普通对话/云盘|官方说明支持上传文件，云盘支持文件夹|提供UTF-8单文件skill.txt和启动语；不依赖模型自动读取本地目录|具体账号的TXT解析、全文读取和执行效果|
+|豆包工作/上传技能|本次官方工作页未能访问；未取得可核验的导入格式说明|保留标准SKILL.md目录作为候选；没有入口则用单文件|原生导入、YAML字段接受范围、是否挂载成功|
+|DeepSeek普通聊天|官方隐私政策明确存在文本、文件等对话输入|提供完整单文件，外链读取失败时粘贴全文；不叫原生安装|账号当前支持的附件类型、URL抓取和全文执行|
+|DeepSeek Harness|官方文档接受<name>/SKILL.md，只扫描一层技能入口|使用同名顶层目录；项目可放.dsh/skills/<name>/SKILL.md，references随目录保留|本机客户端实际发现、加载和业务工具执行|
+
+## 官方依据
+
+- [豆包云盘使用须知](https://www.doubao.com/legal/ai_space)，第1.1与1.2条：文件/文件夹上传。文件夹存储不等于安装技能。
+- [DeepSeek隐私政策](https://cdn.deepseek.com/policies/zh-CN/deepseek-privacy-policy.html)，智能对话部分：文本、图片、文件等输入；不是文件扩展名或大小限制说明。
+- [DeepSeek Harness技能文档固定快照](https://github.com/deepseek-ai/deepseek-harness/blob/ce7073d51254c26cd63b22a60835b8f948deb447/docs/subsystems/skills.md)，Local discovery priority与Skill identity：项目.dsh/skills、.agents/skills，目录入口不递归扫描。
+- [Harness官网](https://www.deepseek.com/en/harness/)：它是独立Harness产品，不能把其目录规则套到普通聊天网站。
+- [豆包工作页](https://www.doubao.com/work)：本次访问失败，仅记录入口，不能据此确认导入操作。
+
+未采用第三方教程冒充官方格式要求；未推测当前文件大小、数量或上下文上限。
+
+## 单文件聊天方式
+
+打开skill.txt或chat/skill.txt，把全文粘贴到对话；界面支持该类型附件时也可上传。再发chat/start.txt中的启动语。文件带资源索引与首尾标记；Markdown中的references路径可对应本文件内RESOURCE章节，不要求普通聊天访问本地文件。
+模型只拿到链接但无法读取时，不得声称加载成功。若正文被截断，请分段提供，并在完整资料到齐后再执行。末尾标记是完整性提示，不是模型理解或行为正确的证明。
+
+## 原生目录方式
+
+解压folder包后，最外层就是技能同名目录。Harness项目布局示例：
+
+```text
+项目目录/
+  .dsh/
+    skills/
+      xhs-content-loop/
+        SKILL.md
+        references/
+```
+
+不要再套一层“下载包/技能合集/技能名”后直接放进技能根目录。其他同名技能可能覆盖发现结果，先核对客户端列表与实际路径；本包不会自动移动用户目录。
+
+## 验收与降级
+
+首次仅根据实际取得的资料说明：当前是聊天文本方式还是原生目录方式、读到了哪些资料、缺哪些能力。不要在普通聊天声称“已永久安装”，不要为了展示成功而编工具调用。
+没有联网则保留动态事实待核验；没有文件工具则在回复中提供成果和接力摘要；没有账号权限则只给草稿。不另装插件、不运行额外脚本、不发布内容来证明加载。
+结构和导出完整性已在本地校验，客户端操作与模型业务效果尚未实测。ChatGPT等其他聊天宿主也可按实际能力使用此文本模式，但不把它列为本次新增实测。
+
+<<<END-RESOURCE references/platform-compatibility.md>>>
+
+<<<RESOURCE references/project-record.md>>>
 # 项目接力记录（schema_version=1）
 
 每个经营项目一份记录；技能文件与经营数据分开。用户已指定项目路径就沿用，否则在当前工作区outputs/crossborder-projects/<项目代号>/保存project.json。无法保存时给聊天摘要。
@@ -173,8 +245,9 @@ AI可做研究、比较、测算、材料清单、商品草稿、图片方案、
 续跑先读取记录和实际产物，再判断继续哪一步；已有明确答案不重问，旧“提交成功”不代表当前审核通过。动态资格/费率/政策在依赖其行动前重查。用户更正保留变更说明，不悄悄覆盖历史。
 状态分列：资料pending/checked；内容drafted；账户not_started/submitted/approved/rejected/unknown；操作not_authorized/authorized/executed/unknown；经营no_data/observed/reviewed。未取得回款不写收入已到账。
 
+<<<END-RESOURCE references/project-record.md>>>
 
-===== references/sop.md =====
+<<<RESOURCE references/sop.md>>>
 # 从零到经营的阶段SOP
 
 只展开用户当前阶段。每阶段按“需要什么→AI做什么→用户做什么→完成证据→下一步”推进，遇到条件不成立就回退、换路线或停止。
@@ -233,8 +306,28 @@ AI逐页辅助：注册主体与站点→联系方式→材料与税务信息→
 
 每轮只给少量有证据的改动，写清理由、成本、观察期和停止条件。补货结合销量不确定性、采购及运输提前期、可用现金；不要简单以历史销量线性外推。把复盘结果更新到选品、价格、页面、履约和下一轮测试中。连续亏损或规则风险触及边界时建议暂停、清理库存或退出，并列出未完订单、退款、税务记录和账户费用的收尾事项。
 
+<<<END-RESOURCE references/sop.md>>>
 
-===== references/templates.md =====
+<<<RESOURCE references/standards-review.md>>>
+# 规范与模板核验 · 2026-10-31
+
+这是维护记录，不是业务政策来源。没有名为“GitHub Skill标准”的独立强制认证；本包以Agent Skills开放规范为基础，按宿主能力适配。
+
+- [Agent Skills规范](https://agentskills.io/specification)：必需name和description，目录名匹配；license、metadata等为可选。建议入口少于500行、详细资料按需读取。
+- [官方参考实现](https://github.com/agentskills/agentskills/tree/69ef37e9424c0a7ea9dd2293b559e43ec8176379/skills-ref)：本轮固定此提交检查。上游说明此库用于演示，不能把通过验证称为认证或生产可靠性保证。
+- [Anthropic模板](https://github.com/anthropics/skills/blob/ca45fc496a3436251f191354091d557da31c15b5/template/SKILL.md)：只提供name、description和正文骨架，不提供效果保证。
+- [Anthropic编写建议](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices)：简洁、按需加载、用真实任务评估。
+- [OpenAI当前技能文档](https://learn.chatgpt.com/docs/build-skills)：当前本地用户目录为~/.agents/skills，仓库目录为.agents/skills；分发可复用技能建议打包插件。
+- [旧OpenAI技能仓库](https://github.com/openai/skills)：本次打开时已标弃用并指向openai/plugins，不把旧目录当最新模板。
+- [OpenAI插件示例](https://github.com/openai/plugins/tree/0722921d5542fc593105c27bd52630babd8b8c2a)：独立发布层，不是修改SKILL.md就等于已进入插件目录。
+- [GitHub主题标签](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/classifying-your-repository-with-topics)：可帮助按主题发现仓库，不承诺搜索排名或访问增长。
+- [MIT许可说明与文本](https://choosealicense.com/licenses/mit/)：经所有者本次授权选择MIT；标准文本见LICENSE。
+
+快照只表示以上日期真实取得的资料。宿主功能、规范与入口可能改变，下次发布时重查；不把抓取时间当规范版本号。
+
+<<<END-RESOURCE references/standards-review.md>>>
+
+<<<RESOURCE references/templates.md>>>
 # 经营模板与计算口径
 
 ## 起点卡
@@ -281,3 +374,7 @@ AI逐页辅助：注册主体与站点→联系方式→材料与税务信息→
 周复盘：统计口径｜收入与贡献｜现金｜库存｜售后与账户健康｜主要问题证据｜下一轮动作/负责人/期限/验收
 
 接力记录：阶段｜已完成与证据｜已确定条件｜未知项｜累计投入/剩余预算｜已授权操作范围｜下一步与完成标志
+
+<<<END-RESOURCE references/templates.md>>>
+
+<<<SKILL-PACK-END crossborder-start-to-operations version=2.1.2>>>
