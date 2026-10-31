@@ -1,0 +1,4 @@
+interface:
+  display_name: "跨境从零开店与经营"
+  short_description: "从没开店开始，核实规则、算清成本，逐步完成上架、履约与复盘"
+  default_prompt: "使用 $crossborder-start-to-operations，我还没开店，请先了解我的条件，带我完成今天的第一步。"
